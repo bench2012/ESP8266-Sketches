@@ -17,16 +17,32 @@ String content;
 
 void setup() {
   Serial.begin(9600);
+  pinMode(0,INPUT);
   WiFi.mode(WIFI_STA);  // Assume we've already been configured
   //  Serial.setDebugOutput(true);
   //  WiFi.printDiag(Serial);
-  if (testWifi()) {
+  if (testWifi() && !testButton()) {
     setupApplication();	// WiFi established, setup application
   } else {
     setupAccessPoint();	// No WiFi yet, enter configuration mode
   }
 }
 
+bool testButton(void) {
+  int c = 0;
+  Serial.println("\nChecking button.");
+  while ( c < 20 ) {
+    button = digitalRead(0); 
+    if (button == LOW {
+      return true;
+    }
+    delay(500);
+    Serial.print(button);
+    c++;
+  }
+  Serial.println("\nButton not press");
+  return false;
+}
 bool testWifi(void) {
   int c = 0;
   Serial.println("\nWaiting for Wifi to connect...");
