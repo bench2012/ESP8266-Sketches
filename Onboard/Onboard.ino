@@ -32,8 +32,8 @@ bool testButton(void) {
   int c = 0;
   Serial.println("\nChecking button.");
   while ( c < 20 ) {
-    button = digitalRead(0); 
-    if (button == LOW {
+    int button = digitalRead(0); 
+    if (button == LOW) {
       return true;
     }
     delay(500);
